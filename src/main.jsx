@@ -6,4 +6,4 @@ import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 import "./index.css";
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")).render(<App />);
