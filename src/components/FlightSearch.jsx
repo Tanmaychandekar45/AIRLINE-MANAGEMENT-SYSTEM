@@ -6,30 +6,17 @@ import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { Plane, Calendar, Users, MapPin, Loader2 } from "lucide-react";
 
-interface FlightData {
-  id: number;
-  flightNumber: string;
-  airline: string;
-  time: string;
-  price: string;
-  duration: string;
-}
-
-interface StatusMessage {
-  message: string;
-  type: 'error' | 'info' | 'success';
-}
 
 export const FlightSearch = () => {
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [departureDate, setDepartureDate] = useState('');
   const [passengers, setPassengers] = useState('1');
-  const [flights, setFlights] = useState<FlightData[]>([]);
+  const [flights, setFlights] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState<StatusMessage>({ message: '', type: 'info' });
+  const [statusMessage, setStatusMessage] = useState({ message: '', type: 'info' });
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = (e) => {
     e.preventDefault();
 
     if (!origin || !destination || !departureDate) {
@@ -43,7 +30,7 @@ export const FlightSearch = () => {
 
     setTimeout(() => {
       setIsLoading(false);
-      const dummyFlights: FlightData[] = [
+      const dummyFlights = [
         { id: 1, flightNumber: 'SC123', airline: 'SkyConnect', time: '08:00 AM', price: '$250', duration: '2h 30m' },
         { id: 2, flightNumber: 'SC456', airline: 'SkyConnect', time: '02:30 PM', price: '$320', duration: '2h 45m' },
         { id: 3, flightNumber: 'SC789', airline: 'SkyConnect', time: '09:15 PM', price: '$285', duration: '2h 20m' },
